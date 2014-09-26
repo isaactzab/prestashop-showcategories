@@ -1,5 +1,8 @@
 <!-- MODULE Show Categories -->
 <section class="showcategories">
+  {if $showHeading}
+  	<h1><span>Categories</span></h1>
+  {/if}
 	{if isset($categories) AND $categories}
 		{foreach from=$categories item=category name=homeCategories}
 			{assign var='categoryLink' value=$link->getcategoryLink($category.id_category, $category.link_rewrite)}

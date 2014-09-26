@@ -65,7 +65,10 @@ class showcategories extends Module
 
 	public function hookDisplayHome()
 	{
+		// TODO: set these options via admin configuration page
 		$imageType = 'list_view';
+		$showHeading = false;
+		
 		$id_lang = $this->context->language->id;
 
 		$storeCategory = Category::getRootCategory();
@@ -73,7 +76,8 @@ class showcategories extends Module
 
 		$this->smarty->assign(array(
 			'categories' => $categories,
-			'imageType' => $imageType
+			'imageType' => $imageType,
+			'showHeading' => $showHeading
 			));
 
 		return $this->display(__FILE__, 'showcategories.tpl');
