@@ -1,6 +1,5 @@
 <!-- MODULE Show Categories -->
 <section class="showcategories">
-	<h4><span>{l s='Categories' mod='showcategories'}</span></h4> 
 	{if isset($categories) AND $categories}
 		{foreach from=$categories item=category name=homeCategories}
 			{assign var='categoryLink' value=$link->getcategoryLink($category.id_category, $category.link_rewrite)}
