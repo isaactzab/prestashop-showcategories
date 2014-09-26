@@ -6,8 +6,8 @@
 			{assign var='imageLink' value=$link->getCatImageLink($category.link_rewrite, $category.id_image, $imageType)}
 			<div class="show_category">
 				<a href="{$categoryLink}">
-					 <img src="{$imageLink}" alt="{$category.name|escape:'htmlall':'UTF-8'}" title="{$category.name|escape:'htmlall':'UTF-8'}" />
-					<h5>{$category.name|truncate:36}</h5>
+					<img src="{$imageLink}" alt="{$category.name|escape:'htmlall':'UTF-8'}" title="{$category.name|escape:'htmlall':'UTF-8'}" />
+					<span class="category_name">{$category.name|truncate:21}</span>
 				</a>
 			</div>
 		{/foreach}
