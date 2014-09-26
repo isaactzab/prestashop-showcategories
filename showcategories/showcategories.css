@@ -1,0 +1,4 @@
+section.showcategories {text-align:center;}
+section.showcategories h1 {text-align:left;}
+.show_category {display:inline-block; margin:2%;}
+.show_category a .category_name {display: block; font-size: 150%;}

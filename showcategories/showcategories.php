@@ -60,7 +60,7 @@ class showcategories extends Module
 
 	public function hookDisplayHeader()
 	{
-	  $this->context->controller->addCSS($this->_path.'css/showcategories.css', 'all');
+	  $this->context->controller->addCSS($this->_path.'showcategories.css', 'all');
 	}
 
 	public function hookDisplayHome()
@@ -80,6 +80,6 @@ class showcategories extends Module
 			'showHeading' => $showHeading
 			));
 
-		return $this->display(__FILE__, 'showcategories.tpl');
+		return $this->display(__FILE__, 'displayHome.tpl');
 	}
 }
