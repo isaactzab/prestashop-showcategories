@@ -27,4 +27,55 @@ if (!defined('_CAN_LOAD_FILES_'))
 
 class showcategories extends Module
 {
+	public function __construct()
+	{
+		$this->name = 'showcategories';
+		$this->tab = 'front_office_features';
+		$this->version = '1.0.0';
+		$this->ps_versions_compliancy = array('min' => '1.5');
+		$this->author = 'David Janke';
+
+		parent::__construct();
+
+		$this->displayName = $this->l('Show Categories');
+		$this->description = $this->l('Display categories on the homepage');
+	}
+
+	public function install()
+	{
+		$this->_clearCache('showcategories.tpl');
+		if (Shop::isFeatureActive()) {
+			Shop::setContext(Shop::CONTEXT_ALL);
+		}
+		return parent::install() &&
+				$this->registerHook('displayHeader') &&
+				$this->registerHook('displayHome');
+	}
+
+	public function uninstall()
+	{
+		$this->_clearCache('showcategories.tpl');
+		return parent::uninstall();
+	}
+
+	public function hookDisplayHeader()
+	{
+	  $this->context->controller->addCSS($this->_path.'css/showcategories.css', 'all');
+	}
+
+	public function hookDisplayHome()
+	{
+		$imageType = 'list_view';
+		$id_lang = $this->context->language->id;
+
+		$storeCategory = Category::getRootCategory();
+		$categories = $storeCategory->getSubCategories($id_lang);
+
+		$this->smarty->assign(array(
+			'categories' => $categories,
+			'imageType' => $imageType
+			));
+
+		return $this->display(__FILE__, 'showcategories.tpl');
+	}
 }
